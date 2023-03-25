@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- BootStrap Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <!-- Popper JS For Tooltip -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <!-- BootStrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        Modal ID : ${modalid} <br>
+        <hr>
+        OFFER LIST SIZE : ${offerlist.size()} <br>
+        <c:forEach items="${offerlist}" var="offer">
+            OFFER ID : ${offer.offerid} | COVERAGE :
+            ${offer.coverage} | PREMIUM :
+            ${offer.premium} <br>
+        </c:forEach>
+        <hr>
+        QUOTE LIST SIZE : ${quotelist.size()} <br>
+        <c:forEach items="${quotelist}" var="quote">
+            OFFER ID : ${quote.offerid} | CARPETAREA :
+            ${quote.carpetarea} |
+            ROOF : ${quote.roof} | FLOOR :
+            ${quote.floor} |
+            FIRE : ${quote.firesafety} | YEAR :
+            ${quote.year} <br>
+        </c:forEach>
+     -->
+    <div class="modal fade" id="Hello" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title"><span class="text-muted">Detailed Report of </span>${modalid}</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item active" aria-current="true">
+                            <h3>Offer History</h3>
+                        </li>
+                        <c:if test="${offerlist.size() > 0}">
+                            <li class="list-group-item">
+                                <table class="table table-hover table-xl align-middle">
+                                    <thead class="rounded">
+                                        <tr>
+
+                                            <th scope="col">
+                                                Offer
+                                                ID
+                                            </th>
+                                            <th scope="col">
+                                                Coverage
+                                            </th>
+                                            <th scope="col">
+                                                Premium
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${offerlist}" var="offer">
+                                            <tr>
+                                                <th scope="row">
+                                                    ${offer.offerid}
+                                                </th>
+                                                <td>
+                                                    ${offer.coverage}
+                                                </td>
+                                                <td>
+                                                    ${offer.premium}
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </c:if>
+                        <c:if test="${offerlist.size() == 0}">
+                            <li class="list-group-item list-group-item-info">
+                                <h3>
+                                    No Offer History
+                                </h3>
+                            </li>
+                        </c:if>
+                    </ul>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item active" aria-current="true">
+                            <h3>
+                                Quote History
+                            </h3>
+                        </li>
+                        <c:if test="${quotelist.size() > 0}">
+                            <li class="list-group-item">
+                                <table class="table table-hover table-xl align-middle">
+                                    <thead class="rounded">
+                                        <tr>
+                                            <th scope="col">
+                                                Offer
+                                                ID
+                                            </th>
+                                            <th scope="col">
+                                                Quote
+                                                Details
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${quotelist}" var="quote">
+                                            <tr>
+                                                <th scope="row">
+                                                    ${quote.offerid}
+                                                </th>
+                                                <td>
+                                                    <div class="d-flex flex-wrap w-75">
+                                                        <span
+                                                            class="m-1 badge rounded-pill bg-info text-dark bg-opacity-50"
+                                                            title="CARPETAREA">
+                                                            <i class="fas fa-chart-area me-1"></i>
+                                                            Carpetarea ${quote.carpetarea}
+                                                        </span>
+                                                        <span
+                                                            class="m-1 badge rounded-pill bg-info text-dark bg-opacity-50"
+                                                            title="BUILD YEAR">
+                                                            <i class="fas fa-wrench me-1"></i>
+                                                            Build Year ${quote.year}
+                                                        </span>
+                                                        <span
+                                                            class="m-1 badge rounded-pill bg-info text-dark bg-opacity-50"
+                                                            title="ROOF TYPE"><i class="fas fa-home me-1"></i></i>
+                                                            Ceiling ${quote.roof}
+                                                        </span>
+                                                        <span
+                                                            class="m-1 badge rounded-pill bg-info text-dark bg-opacity-50"
+                                                            title="FLOOR TYPE"><i class="fas fa-arrows-alt me-1"></i>
+                                                            Flooring ${quote.floor}
+                                                        </span>
+                                                        <span
+                                                            class="m-1 badge rounded-pill bg-info text-dark bg-opacity-50"
+                                                            title="FIRESAFTEY"><i
+                                                                class="fas fa-fire-extinguisher me-1"></i>
+                                                            Firesafety
+                                                            <c:if test="${quote.firesafety eq 1}">
+                                                                Yes
+                                                            </c:if>
+                                                            <c:if test="${quote.firesafety eq 0}">
+                                                                No
+                                                            </c:if>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </c:if>
+                        <c:if test="${quotelist.size() == 0}">
+                            <li class="list-group-item list-group-item-info">
+                                <h3>
+                                    No Quote History
+                                </h3>
+                            </li>
+                        </c:if>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="showModalReport('Hello')">Hello World</button>
+
+    <script>
+        function showModalReport(inquiryid) {
+            var reportModal = new bootstrap.Modal(document.getElementById(inquiryid));
+            reportModal.show();
+        }
+    </script>
+</body>
+
+</html>

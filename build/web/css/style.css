@@ -1,0 +1,36 @@
+/* ! Poppins | Zilla Slab */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Zilla+Slab:wght@300;400&display=swap");
+/* ! Root Variables */
+:root {
+}
+/* ! Setting Fonts */
+* {
+	font-family: inherit;
+}
+html {
+	font-family: "Poppins", sans-serif;
+}
+body {
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+	background: #efefef;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Zilla Slab", serif;
+}
+#load {
+	min-height: 70vh;
+}
+.inquiry-link {
+	cursor: pointer;
+}
+.color-box {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
